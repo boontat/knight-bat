@@ -326,12 +326,13 @@ class CI_Loader {
 		}
 
 		$model = ucfirst($model);
-		echo 'Puah debug' . $mod_path.'models/'.$path.$model.'.php';
+		
 
 		if ( ! class_exists($model, FALSE))
 		{
 			foreach ($this->_ci_model_paths as $mod_path)
 			{
+				echo 'Puah debug' . $mod_path.'models/'.$path.$model.'.php';
 				if ( ! file_exists($mod_path.'models/'.$path.$model.'.php'))
 				{
 					continue;
