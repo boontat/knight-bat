@@ -10,6 +10,8 @@ interface and logical structure to access these libraries. CodeIgniter lets
 you creatively focus on your project by minimizing the amount of code needed
 for a given task.
 
+![CI](https://github.com/boontat/knight-bat/workflows/CI/badge.svg)
+
 *******************
 Release Information
 *******************
