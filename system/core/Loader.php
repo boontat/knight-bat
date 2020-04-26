@@ -284,8 +284,7 @@ class CI_Loader {
 
 			$this->database($db_conn, FALSE, TRUE);
 		}
-		$app_path = APPPATH.'core'.DIRECTORY_SEPARATOR;
-		echo 'Puah debug' . $app_path.'Model.php';
+
 		// Note: All of the code under this condition used to be just:
 		//
 		//       load_class('Model', 'core');
@@ -326,13 +325,10 @@ class CI_Loader {
 		}
 
 		$model = ucfirst($model);
-		
-
 		if ( ! class_exists($model, FALSE))
 		{
 			foreach ($this->_ci_model_paths as $mod_path)
 			{
-				echo 'Puah debug' . $mod_path.'models/'.$path.$model.'.php';
 				if ( ! file_exists($mod_path.'models/'.$path.$model.'.php'))
 				{
 					continue;
