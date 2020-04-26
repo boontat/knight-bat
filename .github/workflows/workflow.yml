@@ -24,7 +24,7 @@ jobs:
     # - name: test
     #   run: bin/phpunit
     - name: Push to Heroku
-      if: steps.test.output.contains("OK")
+      # if: steps.test.output.contains("OK")
       env: 
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         HEROKU_APP_STAGING: ${{ secrets.HEROKU_APP_STAGING }}
