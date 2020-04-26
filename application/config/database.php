@@ -70,7 +70,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | The $query_builder variables lets you determine whether or not to load
 | the query builder class.
 */
-$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+// $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+$url = parse_url('mysql://b0605bdda8e3bd:28ca5797@us-cdbr-iron-east-01.cleardb.net/heroku_24d31d983432d49?reconnect=true');
 $active_group = 'default';
 $query_builder = TRUE;
 
