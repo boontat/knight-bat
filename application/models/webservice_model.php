@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Webservice_model extends CI_Model {
+class webservice_model extends CI_Model {
 
     private $db = '';
 
