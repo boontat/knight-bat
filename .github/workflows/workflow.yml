@@ -23,7 +23,7 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Push to Heroku
-      run: git push -f https://heroku:${{ secrets.HEROKU_API_TOKEN }}@git.heroku.com/${{ secrets.HEROKU_APP_STAGING }}.git origin/master:master
+      run: git push -f https://heroku:93121262-343d-4bcc-ad1a-34f0b206ab12@git.heroku.com/fast-woodland-25145.git origin/master:master
     
     # - name: Login to Heroku Container registry
     #   env: 
