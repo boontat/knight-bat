@@ -284,7 +284,7 @@ class CI_Loader {
 
 			$this->database($db_conn, FALSE, TRUE);
 		}
-
+		echo 'Puah debug' . $app_path.'Model.php';
 		// Note: All of the code under this condition used to be just:
 		//
 		//       load_class('Model', 'core');
