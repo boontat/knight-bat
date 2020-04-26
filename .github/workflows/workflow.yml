@@ -21,9 +21,7 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
-		# - uses: php-actions/phpunit@v1
     - name: test
-      # working-directory: ./application/tests
       run: ./vendor/bin/phpunit application/tests
     # - name: Push to Heroku
     #   env: 
