@@ -5,3 +5,16 @@
 # Access via 
 
 URL - https://hidden-island-86653.herokuapp.com/index.php/webservice/object
+
+# CI/CD
+
+Github Actions
+
+# Hosting
+
+Heroku
+
+# Test
+
+`$cd application test`
+`phpunit`
