@@ -10,6 +10,8 @@ URL - https://hidden-island-86653.herokuapp.com/index.php/webservice/object
 
 Github Actions
 
+Managed to run the CD, but failed to run the phpunit within the github action
+
 # Hosting
 
 Heroku
