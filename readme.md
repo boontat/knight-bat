@@ -16,5 +16,7 @@ Heroku
 
 # Test
 
-`$cd application test`
-`phpunit`
+```
+$cd application test
+$phpunit
+```
