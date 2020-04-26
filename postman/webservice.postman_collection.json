@@ -1,0 +1,103 @@
+{
+	"info": {
+		"_postman_id": "0e0486cb-0b73-46b7-bb7c-1d4c5da137a2",
+		"name": "webservice",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Save value",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"mykey1\": \"value2\"\n}"
+				},
+				"url": {
+					"raw": "https://hidden-island-86653.herokuapp.com/index.php/webservice/object",
+					"protocol": "https",
+					"host": [
+						"hidden-island-86653",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"index.php",
+						"webservice",
+						"object"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update value",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"mykey1\": \"value4\"\n}"
+				},
+				"url": {
+					"raw": "https://hidden-island-86653.herokuapp.com/index.php/webservice/object",
+					"protocol": "https",
+					"host": [
+						"hidden-island-86653",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"index.php",
+						"webservice",
+						"object"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get value",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://hidden-island-86653.herokuapp.com/index.php/webservice/object/mykey1",
+					"protocol": "https",
+					"host": [
+						"hidden-island-86653",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"index.php",
+						"webservice",
+						"object",
+						"mykey1"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
