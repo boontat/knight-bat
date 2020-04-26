@@ -22,8 +22,8 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
     - name: test
-      # working-directory: ./application/tests
-      run: cd application && /bin/ls
+      working-directory: ./application/tests
+      run: /bin/phpunit
     # - name: Push to Heroku
     #   env: 
     #     HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
