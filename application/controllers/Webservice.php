@@ -55,7 +55,7 @@ class Webservice extends CI_Controller
     public function list()
     {
         try {
-            $result = $this->get_all()
+            $result = $this->get_all();
             $this->response($result);
         } catch (Exception $e) {
             $this->response(array(
