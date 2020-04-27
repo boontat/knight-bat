@@ -13,7 +13,7 @@ class Webservice_model extends CI_Model {
 
     public function get_service($option =array())
     {
-        $sql = "SELECT id, `key`, `value`, UNIX_TIMESTAMP(created_at) AS created_at, UNIX_TIMESTAMP(updated_at) AS updated_at FROM webservice WHERE 1=1";
+        $sql = "SELECT `key`, `value`, UNIX_TIMESTAMP(created_at) AS created_at, UNIX_TIMESTAMP(updated_at) AS updated_at FROM webservice WHERE 1=1";
 
         if (!empty($option['id']) && intval($option['id'])) {
             $id = intval($option['id']);
