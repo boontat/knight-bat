@@ -8,7 +8,7 @@ URL - https://hidden-island-86653.herokuapp.com/index.php/webservice/object
 
 # Framework
 
-Codeignighter
+Codeigniter
 
 # Postman Export
 [Postman collection](https://github.com/boontat/knight-bat/tree/master/postman)
