@@ -11,17 +11,24 @@ class Webservice_model extends CI_Model {
         $this->db = $this->load->database('default', true);
     }
 
-    public function get_service($key)
+    public function get_service($option =array())
     {
-        $sql = "SELECT * FROM webservice WHERE `key` = '{$key}'";
-        $query = $this->db->query($sql);
+        $sql = "SELECT id, `key`, `value`, UNIX_TIMESTAMP(created_at) AS created_at, UNIX_TIMESTAMP(updated_at) AS updated_at FROM webservice WHERE 1=1";
 
-        return (!empty($query->result())) ? $query->result() : array();
-    }
-    
-    public function get_service_by_id($ids)
-    {
-        $sql = "SELECT * FROM webservice WHERE id = '{$ids}'";
+        if (!empty($option['id']) && intval($option['id'])) {
+            $id = intval($option['id']);
+            $sql .= " AND `id` = '{$id}'";
+        }
+
+        if (!empty($option['key'])) {
+            $key = urldecode($option['key']); // when key had space in the 
+            $sql .= " AND `key` = '{$key}'";
+        }
+
+        if (!empty($option['timestamp'])) {
+            $sql .= "AND UNIX_TIMESTAMP(updated_at) = '{$option['timestamp']}'";
+        }
+
         $query = $this->db->query($sql);
 
         return (!empty($query->result())) ? $query->result() : array();
