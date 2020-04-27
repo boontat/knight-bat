@@ -92,8 +92,12 @@ class Webservice extends CI_Controller
         $this->check_request($raw_body, 'Request body is empty.');
         $saved_ids = $this->save_json($raw_body);
 
+        if (empty($saved_ids)) {
+            throw new Exception("Create/Update create failed");
+        }
+
         foreach ($saved_ids as $key => $saved_id) {
-            $result[$saved_id] = $this->webservice_model->get_service(array(
+            $result[] = $this->webservice_model->get_service(array(
                 'id' => $saved_id
             ));
         }
