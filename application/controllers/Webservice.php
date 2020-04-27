@@ -55,13 +55,29 @@ class Webservice extends CI_Controller
     public function list()
     {
         try {
-            $result = $this->webservice_model->get_service();
+            $result = $this->get_all()
             $this->response($result);
         } catch (Exception $e) {
             $this->response(array(
                 "message" => $e->getMessage()
             ), ERROR_CODE);
         }
+    }
+    
+    /**
+     * get_all
+     *
+     * @return array
+     */
+    private function get_all()
+    {
+        $result = $this->webservice_model->get_service();
+
+        if (empty($result)) {
+            throw new Exception("No result found.");
+        }
+
+        return $result;
     }
     
     /**
