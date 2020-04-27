@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "Save value",
+			"name": "save/update value",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -18,7 +18,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"mykey1\": \"value2\"\n}"
+					"raw": "{\n    \"test1\": \"test321\"\n}"
 				},
 				"url": {
 					"raw": "https://hidden-island-86653.herokuapp.com/index.php/webservice/object",
@@ -38,9 +38,12 @@
 			"response": []
 		},
 		{
-			"name": "Update value",
+			"name": "list",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
-				"method": "POST",
+				"method": "GET",
 				"header": [
 					{
 						"key": "Content-Type",
@@ -50,10 +53,10 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"mykey1\": \"value4\"\n}"
+					"raw": "{\n    \"local test\": \"unixtime\"\n}"
 				},
 				"url": {
-					"raw": "https://hidden-island-86653.herokuapp.com/index.php/webservice/object",
+					"raw": "https://hidden-island-86653.herokuapp.com/index.php/webservice/list",
 					"protocol": "https",
 					"host": [
 						"hidden-island-86653",
@@ -63,7 +66,7 @@
 					"path": [
 						"index.php",
 						"webservice",
-						"object"
+						"list"
 					]
 				}
 			},
@@ -81,7 +84,7 @@
 					}
 				],
 				"url": {
-					"raw": "https://hidden-island-86653.herokuapp.com/index.php/webservice/object/mykey1",
+					"raw": "https://hidden-island-86653.herokuapp.com/index.php/webservice/object/test1",
 					"protocol": "https",
 					"host": [
 						"hidden-island-86653",
@@ -92,7 +95,42 @@
 						"index.php",
 						"webservice",
 						"object",
-						"mykey1"
+						"test1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get value with timestamp",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "https://hidden-island-86653.herokuapp.com/index.php/webservice/object/test1?timestamp=1587989408",
+					"protocol": "https",
+					"host": [
+						"hidden-island-86653",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"index.php",
+						"webservice",
+						"object",
+						"test1"
+					],
+					"query": [
+						{
+							"key": "timestamp",
+							"value": "1587989408"
+						}
 					]
 				}
 			},
