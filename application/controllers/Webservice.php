@@ -19,6 +19,12 @@ class Webservice extends CI_Controller
         ), 200);
     }
 
+    
+    /**
+     * object
+     *
+     * @return void
+     */
     public function object()
     {
         try {
@@ -40,6 +46,25 @@ class Webservice extends CI_Controller
     }
     
     /**
+     * list
+     * 
+     * List all available value
+     *
+     * @return void
+     */
+    public function list()
+    {
+        try {
+            $result = $this->webservice_model->get_service();
+            $this->response($result);
+        } catch (Exception $e) {
+            $this->response(array(
+                "message" => $e->getMessage()
+            ), ERROR_CODE);
+        }
+    }
+    
+    /**
      * process_post
      *
      * @return void
@@ -52,7 +77,9 @@ class Webservice extends CI_Controller
         $saved_ids = $this->save_json($raw_body);
 
         foreach ($saved_ids as $key => $saved_id) {
-            $result[$saved_id] = $this->webservice_model->get_service_by_id($saved_id);
+            $result[$saved_id] = $this->webservice_model->get_service(array(
+                'id' => $saved_id
+            ));
         }
 
         return $result;
@@ -66,9 +93,14 @@ class Webservice extends CI_Controller
     private function process_get()
     {
         // get process
-        $return_key = $this->uri->segment(3);
+        $timestamp = $this->input->get('timestamp');
+        $return_key = trim($this->uri->segment(3));
+
         $this->check_request($return_key,  'Please provide key.');
-        $result = $this->webservice_model->get_service($return_key);
+        $result = $this->webservice_model->get_service(array(
+            'key' => $return_key,
+            'timestamp' =>  $timestamp,
+        ));
 
         if (empty($result)) {
             throw new Exception("No result found.");
@@ -132,13 +164,13 @@ class Webservice extends CI_Controller
      */
     private function response($content, $status_code = '')
     {
-        // header('Content-Type: application/json');
-        echo json_encode($content);
+        header('Content-Type: application/json');
 
         if ($status_code) {
             http_response_code($status_code);
         } else {
             http_response_code(SUCCESS_CODE);
         }
+        echo json_encode($content);
     }
 }
