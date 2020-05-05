@@ -8,7 +8,7 @@ use CodeIgniter\Controller;
 
 use CodeIgniter\API\ResponseTrait;
 
-class Webservice extends Controller 
+class Webservice extends Controller
 {
     use ResponseTrait;
     private $model;
@@ -17,17 +17,21 @@ class Webservice extends Controller
     {
         $this->model = new WebserviceModel();
     }
-    public function index($slug = null, $timestamp = null)
+
+    public function index()
     {
-        $data = $this->model->getWebservice($slug, );
-        $data = json_encode($data);
-        return $this->respond($data, 200);
+        return $this->list();
     }
 
-    public function view($slug = null)
+    public function list()
     {
-        $data = $this->model->getWebservice($slug);
-        $data = json_encode($data);
+        $data = $this->model->getWebservice();
+        return $this->respond($data,200);
+    }
+
+    public function view($slug = null, $timestamp = null)
+    {
+        $data = $this->model->getWebservice($slug, $timestamp);
         return $this->respond($data, 200);
     }
 
@@ -37,11 +41,11 @@ class Webservice extends Controller
             $this->check_request($data, 'Request body is empty.');
 
             $this->model->saveWebservice($data);
-            return $this->respondCreated($data);    
+            return $this->respondCreated($data);
         } catch (\Exception $e) {
             var_dump($e->getMessage());
         }
-       
+
     }
 
     // public function index()
@@ -51,7 +55,7 @@ class Webservice extends Controller
     //     ), 200);
     // }
 
-    
+
     /**
      * object
      *
@@ -76,26 +80,7 @@ class Webservice extends Controller
             ), ERROR_CODE);
         }
     }
-    
-    /**
-     * list
-     * 
-     * List all available value
-     *
-     * @return void
-     */
-    public function list()
-    {
-        try {
-            $result = $this->get_all();
-            $this->response($result);
-        } catch (Exception $e) {
-            $this->response(array(
-                "message" => $e->getMessage()
-            ), ERROR_CODE);
-        }
-    }
-    
+
     /**
      * get_all
      *
@@ -111,7 +96,7 @@ class Webservice extends Controller
 
         return $result;
     }
-    
+
     /**
      * process_post
      *
@@ -136,7 +121,7 @@ class Webservice extends Controller
 
         return $result;
     }
-    
+
     /**
      * process_get
      *
@@ -160,7 +145,7 @@ class Webservice extends Controller
 
         return $result;
     }
-    
+
     /**
      * save_json
      *
@@ -193,7 +178,7 @@ class Webservice extends Controller
             throw new Exception("Request method not supported.");
         }
     }
-    
+
     /**
      * check_request
      *
@@ -206,23 +191,5 @@ class Webservice extends Controller
         if (empty($request)) {
             throw new \Exception($message);
         }
-    }
-    
-    /**
-     * response
-     *
-     * @param  mixed $content
-     * @return void
-     */
-    private function response($content, $status_code = '')
-    {
-        header('Content-Type: application/json');
-
-        if ($status_code) {
-            http_response_code($status_code);
-        } else {
-            http_response_code(SUCCESS_CODE);
-        }
-        echo json_encode($content);
     }
 }

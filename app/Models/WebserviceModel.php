@@ -12,14 +12,20 @@ class WebserviceModel extends Model
         'updated_at',
     );
 
-    public function getWebservice($slug = false)
+    public function getWebservice($slug = false, $timestamp = false)
     {
         if ($slug === false || empty($slug)) {
             return $this->findAll();
         }
 
+        $where = ['key' => $slug];
+
+        if (!empty($timestamp)) {
+            $where = array_merge($where, ['updated_at' => $timestamp]);
+        }
+
         return $this->asArray()
-                    ->where(['key' => $slug])
+                    ->where($where)
                     ->first();
     }
 
